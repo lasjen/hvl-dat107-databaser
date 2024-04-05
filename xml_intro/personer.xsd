@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://home.hvl.no/databaser" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="personer" type="dat:personerType" xmlns:dat="http://home.hvl.no/databaser"/>
+  <xs:complexType name="personType">
+    <xs:sequence>
+      <xs:element name="pnr">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fornavn" type="xs:string"/>
+      <xs:element name="etternavn">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Nordmann"/>
+            <xs:enumeration value="Pettersen"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="barn" minOccurs="0"/>
+      <xs:element name="fodselsdato">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1980-01-01"/>
+            <xs:enumeration value="1993-08-23"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="personerType">
+    <xs:sequence>
+      <xs:element type="dat:personType" name="person" maxOccurs="unbounded" minOccurs="0" xmlns:dat="http://home.hvl.no/databaser"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

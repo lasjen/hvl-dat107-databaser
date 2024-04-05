@@ -1,0 +1,1 @@
+SET search_path = nosql01,public;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<personer xmlns="http://home.hvl.no/databaser" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+          xs:schemaLocation="http://home.hvl.no/databaser personer_fixed2.xsd">
+  <person pnr="1">
+    <fornavn>Ola</fornavn>
+    <etternavn>Nordmann</etternavn>
+    <barn>1</barn>
+    <fodselsdato>1980-01-01</fodselsdato>
+  </person>
+  <person pnr="2">
+    <fornavn>Kari</fornavn>
+    <etternavn>Svenske</etternavn>
+    <fodselsdato>1993-08-23</fodselsdato>
+  </person>
+</personer>

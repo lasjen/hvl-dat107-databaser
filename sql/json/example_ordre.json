@@ -1,0 +1,21 @@
+{
+  "OrdreNr": "27139",
+  "OrdreDato": "2024-04-01",
+  "Kunde": {
+    "KNr": "5022",
+    "Fornavn": "Ola",
+    "Etternavn": "Nordmann"
+  },
+  "OrderLinjer": [
+    {
+      "PNr": "10830",
+      "Antall": 3,
+      "Pris": 229.30
+    },
+    {
+      "PNr": "22055",
+      "Antall": 1,
+      "Pris": 1220.00
+    }
+  ]
+}

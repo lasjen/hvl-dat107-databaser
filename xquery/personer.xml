@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<personer>
+    <person>
+        <pnr>1</pnr>
+        <fornavn>Ola</fornavn>
+        <etternavn>Nordmann</etternavn>
+        <barn>2</barn>
+        <fodselsdato>1980-01-01</fodselsdato>
+    </person>
+    <person>
+        <pnr>2</pnr>
+        <fornavn>Kari</fornavn>
+        <etternavn>Pettersen</etternavn>
+        <fodselsdato>1993-08-23</fodselsdato>
+    </person>
+    <person>
+        <pnr>3</pnr>
+        <fornavn>Harry</fornavn>
+        <etternavn>Magnussen</etternavn>
+        <barn>1</barn>
+        <fodselsdato>1986-10-23</fodselsdato>
+    </person>
+</personer>
