@@ -20,10 +20,14 @@ Se om du finner funksjonalitet i din editor, og se om den har funksjonalitet for
 
 #### Fil: personer2.xml (schema: personer_fixed.xsd)
 I denne XML-filen er "pnr" et ELEMENT under "person" elementet.
+
 Denne filen er knyttet til schema definert i "personer_fixed.xsd".
+I denne schema definisjonen navngir jeg ikke typer, men nøster alle element definisjoner inne i hverandre. Jeg foretrekker nok selv den andre metoden (vist i personer_fixed2.xsd), der vi navngir simple og komplekse typer.
 
 #### Fil: personer3.xml (schema: personer_fixed2.xsd)
-Her har vi gjort om "pnr" til et ATTRIBUTT til "person" elementet. Samt at vi har definert "pnr" attributet som UNIKT for alle personer (Se filen "personer_fixed2.xsd"
+Her har vi gjort om "pnr" til et ATTRIBUTT til "person" elementet. Samt at vi har definert "pnr" attributet som UNIKT for alle personer (Se filen "personer_fixed2.xsd").
+I denne schema definisjonen gir jeg simple og komplekse datatyper navn. 
+Jeg mener dette er mere oversiktelig (spesielt når filene blir store), og man kan benytte typene eventuelt flere steder i schema definisjonen.
 
 ### XML stilark (XSLT)
 
