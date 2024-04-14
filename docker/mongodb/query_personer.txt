@@ -1,0 +1,163 @@
+// -------------------------------------
+// Copy into MongoDB Console
+// -------------------------------------
+show dbs
+use hvl;
+
+// COLLECTION
+// InsertOne: Insert one document into a new collection
+db.kurs.insertOne({ id: "DAT107", navn: "databaser", studiepoeng: 10 });
+
+// Hva skjer når vi dropper siste collection
+db.kurs.drop();
+db.student.drop();
+db.kurshold.drop();
+
+// Count (på en collection som ikke finnes)
+db.personer.countDocuments();
+
+// InsertMany
+db.kurs.insertMany( [
+    { kursid: "DAT100", kursnavn: "Grunnleggende programmering", semester: "H", studiepoeng: 10 },
+    { kursid: "MAT101", kursnavn: "Diskret matematikk 1", semester: "H", studiepoeng: 5 },
+    { kursid: "DAT107", kursnavn: "Databaser", semester: "V", studiepoeng: 10 },
+    { kursid: "DAT102", kursnavn: "Algoritmer og datastrukturer", semester: "V", studiepoeng: 10 },
+    { kursid: "DAT108", kursnavn: "Programmering og webapplikasjoner", semester: "H", studiepoeng: 10 },
+    { kursid: "MAT122", kursnavn: "Statistikk for ingeniører", semester: "H", studiepoeng: 5 },
+    { kursid: "DAT109", kursnavn: "Systemutvikling", semester: "V", studiepoeng: 10 },
+    { kursid: "DAT110", kursnavn: "Distribuerte systemer og nettverksteknologi", semester: "V", studiepoeng: 10 },
+    { kursid: "DAT191", kursnavn: "Bachloroppgave", semester: "H", studiepoeng: 20 }
+]);
+
+// Finn kurs som går på høsten
+db.kurs.find({ semester: {$eq: "H"}});
+
+// Finn kurs som går på høsten, sorter på "navn) og begrens til 2 kurs
+db.kurs.find({ semester: "H" }).sort({"kursnavn": 1}).limit(2);
+
+// Finn kurs som går på høsten og studiepoeng<=5
+db.kurs.find({ $and: [
+    {semester: {$eq: "H"}},
+    {studiepoeng: {$lte: 5}}]
+});
+
+// Aggregate and match
+db.kurs.aggregate({ $match: {semester: "H" }});
+
+// Finn sum av studiepoeng for hvert semester
+db.kurs.aggregate([
+    {
+        $group: {
+            _id: "$semester",
+            totaltStudiePoeng: { $sum: "$studiepoeng" }
+        }
+    }
+]);
+
+
+// Hvor mange kurs går på høsten
+db.kurs.countDocuments({ semester: {$eq: "H"}});
+
+// Sett inn noen studenter
+db.student.insertMany([
+    {
+        snr: 1,
+        fornavn: "Geir",
+        etternavn: "Hansen",
+        telefon: [
+            {
+                type: "priv",
+                nr: "91010123"
+            },
+            {
+                type: "jobb",
+                nr: "91011334"
+            }
+        ],
+        fodselsdato: "1987-07-03",
+        studiestart: {semester: "H", aar: "2024"},
+        status: "aktiv"
+    },
+    {
+        snr: 2,
+        fornavn: "Lilly",
+        etternavn: "Nilsen",
+        telefon: [
+            {
+                type: "priv",
+                nr: "91010126"
+            }
+        ],
+        fodselsdato: "1995-08-13",
+        studiestart: {semester: "H", aar: "2024"},
+        status: "aktiv"
+    },
+    {
+        snr: 3,
+        fornavn: "Kurt",
+        etternavn: "Douglas",
+        telefon: [
+            {
+                type: "priv",
+                nr: "97010126"
+            }
+        ],
+        fodselsdato: "1975-08-13",
+        studiestart: {semester: "H", aar: "2024"},
+        status: "fullført"
+    }
+]);
+
+// Legge til kurs oppsett for semester
+// Embedded Relasjoner : kurs, foreleser
+db.kurshold.insertMany([
+    {
+        semester: "V",
+        aar: "2024",
+        kurs: [
+            { kursid: "DAT107", kursnavn: "Databaser",  studiepoeng: 10 , foreleser: ["Dag","Lars-Petter","Lasse"], rom: "Aud2"},
+            { kursid: "DAT102", kursnavn: "Algoritmer og datastrukturer",  studiepoeng: 10, foreleser: ["Ole"] },
+            { kursid: "DAT109", kursnavn: "Systemutvikling",  studiepoeng: 10 , foreleser: ["Line","Lars-Petter"]},
+            { kursid: "DAT110", kursnavn: "Distribuerte systemer og nettverksteknologi", studiepoeng: 10, foreleser: ["Dag"] }
+            ]
+    }
+]);
+// Legge til kurs oppsett for semester
+// Embedded Relasjoner : kurs, foreleser
+db.kurshold.drop();
+db.kurshold.insertMany([
+    {
+        semester: "V",
+        aar: "2024",
+        kursid: "DAT107",
+        forelesning: [
+            {
+                rom: "Aud2",
+                dag: "onsdag",
+                klokken: "12:15-14:00",
+                start: "2024-01-10",
+                slutt: "2024-05-10"
+            }]
+    },
+    {
+        semester: "V",
+        aar: "2024",
+        kursid: "DAT109",
+        forelesning: [
+            {
+                rom: "Aud2",
+                dag: "tirsdag", klokken: "10:15-12:00", start: "2024-01-10", slutt: "2024-05-10"
+            }]
+    }
+]);
+
+db.kurshold.aggregate([
+    {
+        $lookup: {
+            from: "kurs",
+            localField: "kursid",
+            foreignField: "kursid",
+            as: "kurs_doc"
+        }
+    }
+]);

@@ -12,4 +12,3 @@ create table personer (
 );
 
 
-
