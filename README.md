@@ -22,12 +22,12 @@ Se om du finner funksjonalitet i din editor, og se om den har funksjonalitet for
 I denne XML-filen er "pnr" et ELEMENT under "person" elementet.
 
 Denne filen er knyttet til schema definert i "personer_fixed.xsd".
-I denne schema definisjonen navngir jeg ikke typer, men n�ster alle element definisjoner inne i hverandre. Jeg foretrekker nok selv den andre metoden (vist i personer_fixed2.xsd), der vi navngir simple og komplekse typer.
+I denne schema definisjonen navngir jeg ikke typer, men n�ster alle element definisjoner inne i hverandre. Jeg foretrekker nok selv den andre metoden (vist i personer_fixed2.xsd), der vi navngir simple og komplekse typer.
 
 #### Fil: personer3.xml (schema: personer_fixed2.xsd)
 Her har vi gjort om "pnr" til et ATTRIBUTT til "person" elementet. Samt at vi har definert "pnr" attributet som UNIKT for alle personer (Se filen "personer_fixed2.xsd").
 I denne schema definisjonen gir jeg simple og komplekse datatyper navn. 
-Jeg mener dette er mere oversiktelig (spesielt n�r filene blir store), og man kan benytte typene eventuelt flere steder i schema definisjonen.
+Jeg mener dette er mere oversiktelig (spesielt n�r filene blir store), og man kan benytte typene eventuelt flere steder i schema definisjonen.
 
 ### XML stilark (XSLT)
 
@@ -105,3 +105,28 @@ Kjør "sh run.sh" (eventuelt kopier og kjør kommando direkte i Windows).
 Filer: <repo>/json/*
 
 Denne følger samme mal som filene under <repo>/xml (se del 2 over).
+
+## Del 5 - Mappen: docker
+Under <b>docker</b> mappen finner dere egne mapper for ulike database systemer som vi har 
+jobbet med under emnet NoSQL (postgres, mongodb og neo4j).
+
+I hver av disse mappene finnes en "docker-compose.yml" fil. Dette er templater som 
+dere ikke trenger å endre på for å kjøre de ulike databasene.
+
+For å bruke disse filene trenger dere å ha installert "Docker Desktop"(https://www.docker.com/products/docker-desktop/) 
+på egen laptop (se egen video).
+
+For å kjøre en MongoDb database, så kjør følgende kommandoer:
+
+```
+> cd docker/mongodb
+> docker compose up -d
+```
+
+Da kan dere gjøre connect mot mongodb ved å bruke en av følgende applikasjoner:
+- IntelliJ
+- Visual Studio Code (med plugin "MongoDB for VS Code")
+- MongoDB Compass (https://www.mongodb.com/try/download/compass)
+- Eclipse (NB! jeg har ikke testet dette)
+- Og mange andre ...
+ 
