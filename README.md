@@ -1,19 +1,28 @@
 # hvl-dat107-databaser
 
+**Innhold:**
+- [XML Intro](#xml-intro)
+- [XML Types i PostgreSQL](#xmltypes-and-postgres)
+- [XML fra database](#xml-fra-db)
+- [JSON](#json)
+- [Docker og lokale databaser](#docker)
+
 Eksempler for NoSQL delen av DAT107 - databaser ved Høgskolen på Vestlandet.
 
-## Del 1 - Mappen: sql_intro
+## Mappen: XML intro  <a id="xml-intro" />
+
+Mappe: sql_intro
 
 Mappen "sql_intro" inneholder eksempler på XML-filer (personer*.xml), XML Schema (personer*.xsd), og stilark (personer*.xsl).
 
-Øvinge:
+Øvinger:
 Åpne et program/applikasjon som har funksjonalitet for å validere et XML dokument, f.eks. Eclipse, Visual Studio Code og/eller IntelliJ JetBrain.
 
 Prøv å bryte reglene for et "velformet" XML dokument, og se hvordan applikasjonen håndterer dette (viktig at XML-en du jobber med er lagret med filformat .xml for at applikasjonen som du benytter skal vite hvilket type dokument du jobber med).
 
 Se om det programmet du benytter har funksjonalitet for å validere om ditt xml-dokument er gyldig (NB! De ulike xml-filene i denne mappen er knyttet til ulike XML Schema definisjoner/filer).
 
-### XML Schema
+### XML Schema 
 #### Fil: personer.xml (schema: personer.xsd)
 Denne filen er knyttet til schema definert i "personer.xsd".
 Se om du finner funksjonalitet i din editor, og se om den har funksjonalitet for å automatisk generere en XML Schema fil ut fra "personer.xml" filen (overskriv gjerne personer.xsd).
@@ -22,12 +31,12 @@ Se om du finner funksjonalitet i din editor, og se om den har funksjonalitet for
 I denne XML-filen er "pnr" et ELEMENT under "person" elementet.
 
 Denne filen er knyttet til schema definert i "personer_fixed.xsd".
-I denne schema definisjonen navngir jeg ikke typer, men n�ster alle element definisjoner inne i hverandre. Jeg foretrekker nok selv den andre metoden (vist i personer_fixed2.xsd), der vi navngir simple og komplekse typer.
+I denne schema definisjonen navngir jeg ikke typer, men nøster alle element definisjoner inne i hverandre. Jeg foretrekker nok selv den andre metoden (vist i personer_fixed2.xsd), der vi navngir simple og komplekse typer.
 
 #### Fil: personer3.xml (schema: personer_fixed2.xsd)
 Her har vi gjort om "pnr" til et ATTRIBUTT til "person" elementet. Samt at vi har definert "pnr" attributet som UNIKT for alle personer (Se filen "personer_fixed2.xsd").
 I denne schema definisjonen gir jeg simple og komplekse datatyper navn. 
-Jeg mener dette er mere oversiktelig (spesielt n�r filene blir store), og man kan benytte typene eventuelt flere steder i schema definisjonen.
+Jeg mener dette er mere oversiktelig (spesielt når filene blir store), og man kan benytte typene eventuelt flere steder i schema definisjonen.
 
 ### XML stilark (XSLT)
 
@@ -41,7 +50,7 @@ Jeg mener dette er mere oversiktelig (spesielt n�r filene blir store), og man 
 Her skal alle personene nå bli presentert i en tabell. 
 Prøv å endre stilarket til å kun liste ut de personene med barn (barn>0). Legg til en person til med barn, og se at tabellen endrer seg (etter en REFRESH).
   
-## Del 2 - XML Types  og Postgres
+## XML Types  og Postgres <a id="xmltypes-and-postgres" />
 
 Filer: <repository>/sql/xml/*
 
@@ -63,7 +72,7 @@ Kjør disse kommandoene for å legge inn data.
 
 Test og modifiser de ulike SQL-ene for å bli kjent med de ulike funksjonalitetene rundt XML type og XPath i PostgreSQL.
 
-### Del 3: Generer XML data fra relasjons tabeller
+## Generer XML data fra relasjons tabeller <a id="xml-fra-db" />
 
 Filer: <repository>/rdbms/*
 
@@ -84,7 +93,7 @@ Test og modifiser de ulike SQL-ene for å bli kjent med de ulike funksjonalitete
 Test og modifiser de ulike SQL-ene for å bli kjent med de ulike funksjonalitetene rundt funksjonalitet for å generer JSON data fra relasjons tabeller.
  
  
-## Del 3 - XQuery
+### XQuery 
 
 Denne er ikke så veldig viktig, men gir en liten forståelse for hva XQuery er.
 
@@ -100,13 +109,13 @@ Se hvilke filer du trenger i classpath i run.sh, og endre run.sh til å peke mot
 
 Kjør "sh run.sh" (eventuelt kopier og kjør kommando direkte i Windows).
 
-## Del 4 - JSON
+## JSON <a id="json" />
 
 Filer: <repo>/json/*
 
 Denne følger samme mal som filene under <repo>/xml (se del 2 over).
 
-## Del 5 - Mappen: docker
+## Docker og databaser (lokalt) <a id="docker" />
 Under <b>docker</b> mappen finner dere egne mapper for ulike database systemer som vi har 
 jobbet med under emnet NoSQL (postgres, mongodb og neo4j).
 
