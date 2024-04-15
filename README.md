@@ -127,9 +127,13 @@ på egen laptop (se egen video).
 
 For å kjøre en MongoDb database, så kjør følgende kommandoer:
 
-```
+```bash
 > cd docker/mongodb
 > docker compose up -d
+```
+Connect streng:
+```mongodb
+mongodb://mongoadmin:mongo@localhost:27017/
 ```
 
 Da kan dere gjøre connect mot mongodb ved å bruke en av følgende applikasjoner:
