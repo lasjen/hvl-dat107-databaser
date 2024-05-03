@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oppskrifter xmlns="http://oving.hvl.no/databaser"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://oving.hvl.no/databaser oppskrifter.xsd">
+    <oppskrift>
+        <navn>Pizza med egg</navn>
+        <vanskelighetsgrad>Middels</vanskelighetsgrad>
+        <tid>20-40 min</tid>
+        <porsjoner>4</porsjoner>
+        <ingredienser>
+            <ingrediens navn="tørrgjær" mengde="1" enhet="ts"/>
+            <ingrediens navn="lunkent vann" mengde="4" enhet="dl"/>
+            <ingrediens navn="ekstra finmalt pizzamel" mengde="275" enhet="g"/>
+            <ingrediens navn="hvetemel" mengde="250" enhet="g"/>
+            <ingrediens navn="pizzasaus" mengde="2" enhet="dl"/>
+            <ingrediens navn="revet ost" mengde="100" enhet="g"/>
+            <ingrediens navn="egg" mengde="4" enhet="stk"/>
+        </ingredienser>
+        <metode>
+            <steg id="1">Rør gjæren ut i litt av vannet. Tilsett italiensk tipo 00 mel sammen med salt. Hvetemel tilsettes litt av gangen til deigen ikke er klissete.</steg>
+            <steg id="2">Denne pizzaen kan lages enklest mulig, uten pizzaovn, pizzastein eller andre hjelpemidler. Sett på ovnen på høyeste temperatur. Sett inn stekeplaten (uten bakepapir).</steg>
+            <steg id="3">Fordel pizzadeigen på bakepapirark. Lag gjerne porsjonspizza. Smør på pizzasaus, la det være igjen en centimeter mot kanten. Fordel osten over.</steg>
+            <steg id="4">Knekk egget på midten av hver pizza. Når ovnen og platen er helt varm, dra forsiktig bakepapiret med den ustekte pizzaen over på en varm stekeplate. Trikset er høy varme på kort tid, ca. 10 minutter. Pizzaen skal være gyllen og sprø. </steg>
+        </metode>
+        <kommentar>
+            Egg passer til alt! Også pizza. Det er faktisk en gjenganger på italienske pizzarestauranter, og heter da gjerne Bismarck.
+        </kommentar>
+        <innhold kalorier="1167" fett="23" karbohydrater="45" proteiner="32"/>
+    </oppskrift>
+</oppskrifter>

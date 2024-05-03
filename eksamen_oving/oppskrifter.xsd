@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns="http://oving.hvl.no/databaser"
+           targetNamespace="http://oving.hvl.no/databaser"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dat="http://oving.hvl.no/databaser">
+  <xs:element name="oppskrifter" type="oppskrifterType"/>
+  <xs:complexType name="oppskrifterType">
+    <xs:sequence>
+      <xs:element name="oppskrift" type="oppskriftType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="oppskriftType">
+    <xs:sequence>
+      <xs:element name="navn" type="xs:string"/>
+      <xs:element name="vanskelighetsgrad" type="xs:string"/>
+      <xs:element name="tid" type="xs:string"/>
+      <xs:element name="porsjoner" type="porsjonerType"/>
+      <xs:element name="ingredienser" type="ingredienserType"/>
+      <xs:element name="metode" type="metodeType">
+        <xs:unique name="pnrUnique" >
+          <xs:selector xpath="dat:steg"/>
+          <xs:field xpath="@id"/>
+        </xs:unique>
+      </xs:element>
+      <xs:element name="kommentar" type="xs:string"/>
+      <xs:element name="innhold" type="innholdType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ingredienserType">
+    <xs:sequence>
+      <xs:element name="ingrediens" type="ingrediensType"
+                  maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ingrediensType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="navn" type="xs:string" use="required"/>
+        <xs:attribute name="mengde" type="xs:string" use="required"/>
+        <xs:attribute name="enhet" type="enhetType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="metodeType">
+    <xs:sequence>
+      <xs:element name="steg" type="stegType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stegType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="id" type="xs:string"  use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="innholdType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="kalorier" type="xs:string"/>
+        <xs:attribute name="fett" type="xs:string"/>
+        <xs:attribute name="karbohydrater" type="xs:string"/>
+        <xs:attribute name="proteiner" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="enhetType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="g" />
+        <xs:enumeration value="kg" />
+        <xs:enumeration value="l" />
+        <xs:enumeration value="dl" />
+        <xs:enumeration value="ts" />
+        <xs:enumeration value="ss" />
+        <xs:enumeration value="stk" />
+      </xs:restriction>
+    </xs:simpleType>
+  <xs:simpleType name="porsjonerType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1" />
+      <xs:maxInclusive value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="filmer.xsl"?>
+<filmer>
+    <film id="1">
+        <tittel>Top Gun</tittel>
+        <utgitt>1986</utgitt>
+        <distributør>Paramount Pictures</distributør>
+        <filmskapere>
+            <regi navn="Tony Scott" />
+            <produsent navn="Don Simpson" />
+            <produsent navn="Ferry Bruckheimer" />
+        </filmskapere>
+        <kategorier>
+            <kategori>Action</kategori>
+            <kategori>Romantikk</kategori>
+        </kategorier>
+        <skuespillere>
+            <skuespiller navn="Tom Cruise" role="Maverick" />
+            <skuespiller navn="Kelly McGillis" role="Charlie" />
+            <skuespiller navn="Anthony Edwards" role="Goose" />
+        </skuespillere>
+    </film>
+    <film id="2">
+        <tittel>Blue Velvet</tittel>
+        <utgitt>1986</utgitt>
+        <distributør>De Laurentiis Entertainment Group</distributør>
+        <filmskapere>
+            <regi navn="David Lynch" />
+            <produsent navn="Fred Caruso" />
+        </filmskapere>
+        <kategorier>
+            <kategori>Drama</kategori>
+        </kategorier>
+        <skuespillere>
+            <skuespiller navn="Isabella Rossellini" role="Dorothy" />
+            <skuespiller navn="Kyle MacLachlan" role="Jeffrey" />
+            <skuespiller navn="Dennis Hopper" role="Frank" />
+            <skuespiller navn="Laura Dern" role="Sandy" />
+        </skuespillere>
+    </film>
+</filmer>

@@ -1,0 +1,73 @@
+drop table if exists kjoretoy;
+drop table if exists passering;
+
+--------------------------
+-- TABLES
+--------------------------
+
+-- Oppgave 2 a og b
+CREATE TABLE kjoretoy (
+ regnr VARCHAR(7) PRIMARY KEY,
+ data JSONB
+);
+
+CREATE TABLE passering (
+  id SERIAL PRIMARY KEY,
+  data JSONB
+);
+
+INSERT INTO kjoretoy (regnr, data) VALUES ('XD00001','{"etternavn": "Hansen","fornavn": "Ola","adresse": "Vestgård 1, 7600","epost": "olah@gmail.com","tlfnummer": "90011222"}');
+INSERT INTO kjoretoy (regnr, data) VALUES ('SD00005','{"etternavn": "Nilsen","fornavn": "Pia","adresse": "Skeia 4, 5400","epost": "pian@gmail.com","tlfnummer": "90022333"}');
+INSERT INTO kjoretoy (regnr, data) VALUES ('EE80001','{"etternavn": "Dahl","fornavn": "Kai","adresse": "Sørvegen 1, 3400","epost": "kaid@gmail.com","tlfnummer": "90033444"}');
+
+INSERT INTO passering(data) VALUES ('{"regnr":"XD00001","tid":"2024-04-01 09:31:03.234","bomid":1001}');
+INSERT INTO passering(data) VALUES ('{"regnr":"XD00001","tid":"2024-04-02 09:01:33.234","bomid":1001}');
+INSERT INTO passering(data) VALUES ('{"regnr":"XD00001","tid":"2024-04-03 10:51:03.234","bomid":1001}');
+INSERT INTO passering(data) VALUES ('{"regnr":"XD00001","tid":"2024-04-03 15:31:03.234","bomid":1002}');
+INSERT INTO passering(data) VALUES ('{"regnr":"SD00005","tid":"2024-04-01 08:11:03.234","bomid":1002}');
+INSERT INTO passering(data) VALUES ('{"regnr":"SD00005","tid":"2024-04-03 09:31:03.234","bomid":1001}');
+INSERT INTO passering(data) VALUES ('{"regnr":"SD00005","tid":"2024-04-03 15:30:33.234","bomid":1002}');
+INSERT INTO passering(data) VALUES ('{"regnr":"EE80001","tid":"2024-04-01 12:30:33.234","bomid":1001}');
+INSERT INTO passering(data) VALUES ('{"regnr":"EE80001","tid":"2024-04-04 07:30:49.234","bomid":1001}');
+INSERT INTO passering(data) VALUES ('{"regnr":"EE80001","tid":"2024-04-04 10:50:53.234","bomid":1002}');
+INSERT INTO passering(data) VALUES ('{"regnr":"EE80001","tid":"2024-04-04 19:10:33.234","bomid":1002}');
+INSERT INTO passering(data) VALUES ('{"regnr":"EE80001","tid":"2024-04-05 08:00:13.134","bomid":1004}');
+INSERT INTO passering(data) VALUES ('{"regnr":"AA10000","tid":"2024-04-02 19:10:33.234","bomid":1002}');
+INSERT INTO passering(data) VALUES ('{"regnr":"AA10000","tid":"2024-04-07 08:00:13.134","bomid":1004}');
+INSERT INTO passering(data) VALUES ('{"regnr": null,"tid":"2024-04-05 09:00:13.134","bomid":1004}');
+
+-- Oppgave 2c
+UPDATE kjoretoy
+   SET data = data - 'tlfnummer'
+   WHERE data ? 'tlfnummer';
+
+select * from kjoretoy;
+
+-- Oppgave 2e
+SELECT *
+FROM passering p LEFT JOIN kjoretoy k ON p.data ->> 'regnr' = k.regnr;
+
+-- Oppgave 2h
+SELECT k.regnr, count(*), k.data ->> 'fornavn' fornavn, k.data ->> 'etternavn' etternavn, k.data ->> 'epost' epost
+FROM passering p INNER JOIN kjoretoy k ON p.data ->> 'regnr' = k.regnr
+GROUP BY k.regnr;
+
+
+-- Oppgave 2i
+SELECT *
+FROM passering AS p
+WHERE p.data ->> 'regnr' = 'AA10000'
+  AND p.id = (select max(id) from passering WHERE p.data ->> 'regnr' = 'AA10000');
+
+SELECT *
+FROM passering AS p
+WHERE p.data ->> 'regnr' = 'AA10000'
+  AND p.data ->> 'tid' = (select max(data ->> 'tid') from passering WHERE p.data ->> 'regnr' = 'AA10000');
+
+
+-- Oppgave 2j
+SELECT count(*)
+FROM passering p
+WHERE p.data ->> 'regnr' IS NULL;
+
+select * from passering;

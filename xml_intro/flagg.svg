@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300px" height="300px"  viewBox="0 0 300 300">
+    <desc>
+        Flaggets proposjoner:
+        Horisontalt: 6R 1H 2B 1h 12R=22
+        Vertikalt:   6R 1H 2B 1H 6R=16
+    </desc>
+    <g transform="translate(20,50)">
+        <rect x="0" y="0" width="220" height="160"
+              fill="red" stroke="none" stroke-width="0"/>
+
+        <rect x="0" y="60" width="220" height="40"
+              fill="white" stroke="none"/>
+        <rect x="60" y="0" width="40" height="160"
+              fill="white" stroke="none"/>
+
+        <rect x="0" y="70" width="220" height="20"
+              fill="blue" stroke="none"/>
+        <rect x="70" y="0" width="20" height="160"
+              fill="blue" stroke="none"/>
+
+        <g transform="translate(0,225)">
+            <text id="TextElement" x="0" y="0"
+                  font-family="Verdana" font-size="25"
+                  fill="black" stroke="none">
+                17.mai
+            </text>
+        </g>
+    </g>
+</svg>

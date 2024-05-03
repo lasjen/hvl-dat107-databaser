@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns="http://oving.hvl.no/databaser"
+           targetNamespace="http://oving.hvl.no/databaser"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dat="http://oving.hvl.no/databaser">
+  <xs:element name="filmer" type="filmerType">
+    <xs:unique name="FilmIdUnique" >
+      <xs:selector xpath="dat:film"/>
+      <xs:field xpath="@id"/>
+    </xs:unique>
+  </xs:element>
+  <xs:complexType name="filmerType">
+    <xs:sequence>
+      <xs:element name="film" type="filmType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="filmType">
+    <xs:sequence>
+      <xs:element name="tittel" type="xs:string" />
+      <xs:element name="utgitt" type="xs:string"/>
+      <xs:element name="distributør" type="xs:string"/>
+      <xs:element name="filmskapere" type="filmskapereType"/>
+      <xs:element name="kategorier" type="kategorierType"/>
+      <xs:element name="skuespillere" type="skuespillereType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="filmskapereType">
+    <xs:sequence>
+      <xs:element name="regi" type="regiType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="produsent"  type="produsentType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="kategorierType">
+    <xs:sequence>
+      <xs:element name="kategori" minOccurs="1" maxOccurs="unbounded">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Action"/>
+            <xs:enumeration value="Romantikk"/>
+            <xs:enumeration value="Drama"/>
+            <xs:enumeration value="Humor"/>
+            <xs:enumeration value="Western"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="skuespillereType">
+    <xs:sequence>
+      <xs:element type="skuespillerType" name="skuespiller" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="skuespillerType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="navn" use="required"/>
+        <xs:attribute type="xs:string" name="role" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="regiType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="navn" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="produsentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="navn" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

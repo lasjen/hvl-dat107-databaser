@@ -1,0 +1,27 @@
+{
+  "oppskrifter": [
+    {
+      "navn":"Pizza med egg",
+      "vanskelighetsgrad": "Middels",
+      "ingredienser": [
+        { "navn": "tørrgjær", "mengde": "1", "enhet":  "ts"},
+        { "navn": "lunkent vann", "mengde": "4", "enhet":  "dl"}
+      ],
+      "steg": [
+        { "id": 1,
+          "beskrivelse": "Rør gjæren ut i litt av vannet. Tilsett italiensk tipo 00 mel sammen med salt. Hvetemel tilsettes litt av gangen til deigen ikke er klissete."
+        },
+        { "id": 2,
+          "beskrivelse": "Bla bla bla."
+        }
+      ],
+      "kommentar": "bla bla",
+      "innhold": {
+        "kalorier": 1145,
+        "karbohydrater": 344,
+        "proteiner": 56
+      }
+    }
+  ]
+
+}
